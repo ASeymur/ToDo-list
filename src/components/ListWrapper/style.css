@@ -1,0 +1,175 @@
+.listWrapper {
+  background-color: antiquewhite;
+  margin: 30px;
+  padding: 50px 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.listWrapperHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.listButtons {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+}
+.addTaskBtn {
+  background-color: #cd611f;
+  color: #1c1e35;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+}
+
+.addTaskBtn:active,
+.addTaskBtn:hover {
+  background-color: #1c1e35;
+  color: #cd611f;
+  transition: all 0.3s;
+}
+
+.clearTaskBtn {
+  color: #cd611f;
+  background-color: #1c1e35;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+}
+
+.clearTaskBtn:active,
+.clearTaskBtn:hover {
+  color: #1c1e35;
+  background-color: #cd611f;
+  transition: all 0.3s;
+}
+
+.closeModal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 999;
+}
+
+.closeModalBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.modalInputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.modalTitle {
+  color: #1c1e35;
+}
+
+.padding {
+  padding: 0px 5px;
+}
+
+.modalButtonWrapper {
+  text-align: end;
+}
+
+.addTaskBtnPadding {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 20px;
+  background-color: #1c1e35;
+  color: antiquewhite;
+  padding: 20px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+
+.Toastify__toast-theme--light {
+  background-color: #1c1e35 !important;
+  color: antiquewhite !important;
+}
+
+.Toastify__close-button > svg {
+  fill: antiquewhite !important;
+}
+
+.addTitle {
+  font-size: 35px;
+  color: #1c1e35;
+  text-align: center;
+}
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 1285px) {
+  .listWrapper {
+    margin: 10px;
+    padding: 30px 10px;
+  }
+
+  .listButtons {
+    padding: 10px 30px;
+  }
+
+  .addTaskBtn,
+  .clearTaskBtn {
+    padding: 8px;
+  }
+
+  .modalTitle {
+    font-size: 24px;
+  }
+
+  .addTitle {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .listWrapper {
+    margin: 10px;
+    padding: 30px 10px;
+  }
+
+  .listButtons {
+    padding: 10px;
+  }
+
+  .addTaskBtn,
+  .clearTaskBtn {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .modalTitle {
+    font-size: 24px;
+  }
+
+  .addTitle {
+    font-size: 28px;
+  }
+}
+

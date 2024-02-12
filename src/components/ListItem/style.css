@@ -1,0 +1,62 @@
+.listItemWrapper {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* margin-top: 50px; */
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 20px;
+  background-color: #1c1e35;
+  color: antiquewhite;
+  padding: 20px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+
+.listItemDescription {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.listItemButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.editTitle {
+  font-size: 35px;
+  color: #1c1e35;
+  text-align: center;
+}
+
+/* .listItemDateWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.listItemCreationLabel {
+  color: #970505;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listItemDate {
+  color: #1c1e35;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.listItemDoneLabel {
+  color: #0a7227;
+  font-size: 20px;
+  font-weight: bold;
+}
