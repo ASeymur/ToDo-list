@@ -173,3 +173,33 @@
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .listWrapper {
+    padding: 20px 20px;
+  }
+  .listWrapperHeader {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .addTaskBtn,
+  .clearTaskBtn {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .listItem {
+    font-size: 18px;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+
+  .addTitle {
+    font-size: 24px;
+  }
+}

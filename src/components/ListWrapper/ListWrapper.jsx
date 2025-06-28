@@ -1,20 +1,18 @@
 import "./style.css";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
-import ModalComponent from "../ModalComponent/ModalComponent";
+import ButtonComponent from "../Common/ButtonComponent/ButtonComponent";
 import { useState } from "react";
-import Title from "../Title/Title";
-import InputComponent from "../InputComponent/InputComponent";
 import Stats from "../Stats/Stats";
 import ListItem from "../ListItem/ListItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddEditTaskModal from "../Common/ModalComponent/AddEditTaskModal/AddEditTaskModal";
+import ConfirmModal from "../Common/ModalComponent/ConfirmModal/ConfirmModal";
 
 const ListWrapper = () => {
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [description, setDescription] = useState("");
-
 
   const handleAddTasks = (task) => {
     const newTask = {
@@ -81,7 +79,6 @@ const ListWrapper = () => {
         : task
     );
 
-    // Update the state using setTasks
     setTasks(updatedTasks);
   };
 
@@ -122,54 +119,25 @@ const ListWrapper = () => {
           />
         ))}
       </div>
-      <ModalComponent isOpen={isModalOpen}>
-        <div className="closeModal">
-          <ButtonComponent
-            label="&#10006;"
-            onClick={handleCloseModal}
-            className="addTaskBtn padding"
-          />
-        </div>
-        <Title className="addTitle">Ad ToDo</Title>
-        <div className="modalInputsWrapper">
-          <InputComponent
-            type="text"
-            placeholder="Type here..."
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-            handleKeyDown={handleKeyDown}
-            className="listItem"
-          />
-        </div>
-        <div className="modalButtonWrapper">
-          <ButtonComponent
-            label="Add"
-            className="addTaskBtn addTaskBtnPadding"
-            onClick={handleSubmit}
-          />
-        </div>
-      </ModalComponent>
-      <ModalComponent isOpen={isConfirmModalOpen}>
-        <div className="modalTitleWrapper">
-          <h2 className="modalTitle">
-            Are you sure you want to clear ToDo list?
-          </h2>
-        </div>
-        <div className="modalButtonsWrapper">
-          <ButtonComponent
-            label="Clear list"
-            onClick={handleClearList}
-            className="addTaskBtn"
-          />
-          <ButtonComponent
-            label="Cancel"
-            onClick={handleCloseModal}
-            className="addTaskBtn"
-          />
-        </div>
-      </ModalComponent>
+      <AddEditTaskModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        description={description}
+        setDescription={setDescription}
+        onConfirm={handleSubmit}
+        handleKeyDown={handleKeyDown}
+        title="Add Task"
+        bv
+        confirmLabel="Add"
+      />
+
+      <ConfirmModal
+        isOpen={isConfirmModalOpen}
+        onConfirm={handleClearList}
+        onCancel={handleCloseModal}
+        title="Are you sure you want to clear the list?"
+        confirmLabel="Clear"
+      />
       <ToastContainer />
     </div>
   );
