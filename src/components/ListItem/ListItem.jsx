@@ -13,7 +13,6 @@ const ListItem = ({
   handleDeleteTask,
   handleEditTasks,
 }) => {
-  const [isChecked, setIsChecked] = useState(tasks.completed || false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [description, setDescription] = useState("");
@@ -26,8 +25,7 @@ const ListItem = ({
   };
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    onCheckboxChange(tasks.id, !isChecked);
+    onCheckboxChange(tasks.id, !tasks.completed);
   };
 
   const handleConfirmDelete = () => {
@@ -53,19 +51,19 @@ const ListItem = ({
       <ListItemDate
         createdAt={tasks.createdAt}
         completedAt={tasks.completedAt}
-        isChecked={isChecked}
+        isChecked={tasks.completed}
       />
       <div className="listItem">
         <div className="listItemDescription">
           <InputComponent
             type="checkbox"
-            checked={isChecked}
+            checked={tasks.completed}
             onChange={handleCheckboxChange}
             className="custom-checkbox"
           />
           <span
             style={
-              isChecked
+              tasks.completed
                 ? { textDecoration: "line-through", color: "#0a7227" }
                 : {}
             }
@@ -74,7 +72,7 @@ const ListItem = ({
           </span>
         </div>
         <div className="listItemButtons">
-          {!isChecked && (
+          {!tasks.completed && (
             <ButtonComponent
               label="Edit"
               className="addTaskBtn"

@@ -1,6 +1,6 @@
 import "./style.css";
 import ButtonComponent from "../Common/ButtonComponent/ButtonComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stats from "../Stats/Stats";
 import ListItem from "../ListItem/ListItem";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +14,17 @@ const ListWrapper = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [description, setDescription] = useState("");
 
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    setTasks(savedTasks);
+  }, []);
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+  }, [tasks]);
+
   const handleAddTasks = (task) => {
     const newTask = {
       ...task,
@@ -26,6 +37,7 @@ const ListWrapper = () => {
   const handleClearList = () => {
     setTasks([]);
     setIsConfirmModalOpen(false);
+    localStorage.removeItem("tasks");
     toast.info("ToDo list has been cleared!", {
       autoClose: 2000,
     });
@@ -65,7 +77,9 @@ const ListWrapper = () => {
     }
   };
   const handleDeleteTask = (taskId) => {
-    setTasks(tasks.filter((item) => item.id !== taskId));
+    const updatedTasks = tasks.filter((item) => item.id !== taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleCheckboxChange = (taskId, isChecked) => {
@@ -80,6 +94,7 @@ const ListWrapper = () => {
     );
 
     setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleEditTasks = (id, newDescription) => {
@@ -88,6 +103,7 @@ const ListWrapper = () => {
     );
 
     setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     handleCloseModal();
   };
   return (
